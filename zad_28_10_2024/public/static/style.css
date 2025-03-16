@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  color: black;
+  box-sizing: border-box
+}
+
+nav {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  background-color: rgb(106, 190, 250);
+}
+
+th,
+td {
+  padding: 10px;
+}
+
+footer {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgb(106, 190, 250);
+}
+
+nav div {
+  width: 25%;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav div a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+a:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+article {
+  width: 100%;
+  height: 1000px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(106, 190, 250, 0.3);
+}
+
+p {
+  font-size: 20px;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+input {
+  float: right;
+  width: 150px;
+  margin: 0 0 0 5px;
+}
+
+button {
+  display: block;
+  width: 50px;
+  margin: 20px auto 0 auto;
+}
+
+textarea {
+  float: right;
+  width: 150px;
+  margin: 0 0 0 5px;
+}
+
+img {
+  width: 100%;
+  height: 350px;
+}
+
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+.mySlides {
+  display: none;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.text {
+  color: #ff00cc;
+  font-size: 25px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
