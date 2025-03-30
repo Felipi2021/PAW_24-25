@@ -1,16 +1,19 @@
-import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
-import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 
-
-const queryClient = new QueryClient()
+import './App.css'
+import {BrowserRouter, Route, Routes} from "react-router";
+import {Posts} from "./components/posts";
+import {Post} from "./components/post";
 
 function App() {
 
   return (
     <>
-        <QueryClientProvider client={queryClient}>
-            <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
+        <BrowserRouter>
+            <Routes>
+                <Route index element={ <Posts></Posts>}/>
+                <Route path='post/:id' element={<Post/>}/>
+            </Routes>
+        </BrowserRouter>
     </>
   )
 }
