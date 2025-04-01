@@ -1,0 +1,58 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .title {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .postsList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .postItem {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  
+  .postItem:hover {
+    transform: translateY(-3px);
+  }
+  
+  .postTitle {
+    color: #3498db;
+    margin-top: 0;
+  }
+  
+  .postBody {
+    color: #555;
+    line-height: 1.6;
+  }
+  
+  .link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .loading {
+    text-align: center;
+    font-size: 18px;
+    color: #7f8c8d;
+  }
+  
+  .error {
+    color: #e74c3c;
+    text-align: center;
+    padding: 20px;
+    background: #fdecea;
+    border-radius: 8px;
+  }
