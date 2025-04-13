@@ -1,4 +1,4 @@
-from sprawdzian.sprawdzian import main
+from sprawdzian import main
 
 if __name__ == "__main__":
     main()

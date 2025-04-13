@@ -1,11 +1,11 @@
 import datetime
 import json
 from typing import List, Dict, Any
-from .models.Student import Student
-from .models.Teacher import Teacher
-from .models.Subject import Subject
-from .models.Grades import Grades
-from .year_grade import year_grade
+from models.Student import Student
+from models.Teacher import Teacher
+from models.Subject import Subject
+from models.Grades import Grades
+from year_grade import year_grade
 
 __copyright__ = "Zespół Szkół Komunikacji"
 __author__ = "Filip Andrzejczak 4D"
