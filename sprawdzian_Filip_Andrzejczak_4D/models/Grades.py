@@ -1,3 +1,7 @@
+
+__copyright__ = "Zespół Szkół Komunikacji"
+__author__ = "Filip Andrzejczak 4D"
+
 from typing import List
 from .Student import Student
 from .Subject import Subject
