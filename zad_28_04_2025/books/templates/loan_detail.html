@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}Loan Details - Library Manager{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Loan Details</h1>
+
+<div class="card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Loan Information</h5>
+        <span class="badge 
+            {% if loan.status == 'active' %}bg-success
+            {% elif loan.status == 'returned' %}bg-secondary
+            {% elif loan.status == 'overdue' %}bg-danger
+            {% endif %}">
+            {{ loan.get_status_display }}
+        </span>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Book Information</h5>
+                <dl class="row">
+                    <dt class="col-sm-4">Title:</dt>
+                    <dd class="col-sm-8"><a href="{% url 'book-detail' loan.book.id %}">{{ loan.book.title }}</a></dd>
+                    
+                    <dt class="col-sm-4">Author:</dt>
+                    <dd class="col-sm-8">{{ loan.book.author }}</dd>
+                    
+                    <dt class="col-sm-4">Genre:</dt>
+                    <dd class="col-sm-8">{{ loan.book.get_genre_display }}</dd>
+                </dl>
+            </div>
+            <div class="col-md-6">
+                <h5>Borrower Information</h5>
+                <dl class="row">
+                    <dt class="col-sm-4">Name:</dt>
+                    <dd class="col-sm-8">{{ loan.borrower_name }}</dd>
+                    
+                    {% if loan.borrower_email %}
+                    <dt class="col-sm-4">Email:</dt>
+                    <dd class="col-sm-8">{{ loan.borrower_email }}</dd>
+                    {% endif %}
+                </dl>
+            </div>
+        </div>
+        
+        <hr>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <h5>Loan Details</h5>
+                <dl class="row">
+                    <dt class="col-sm-2">Loan Date:</dt>
+                    <dd class="col-sm-4">{{ loan.loan_date|date:"d F Y" }}</dd>
+                    
+                    <dt class="col-sm-2">Due Date:</dt>
+                    <dd class="col-sm-4">{{ loan.due_date|date:"d F Y" }}</dd>
+                    
+                    {% if loan.return_date %}
+                    <dt class="col-sm-2">Return Date:</dt>
+                    <dd class="col-sm-4">{{ loan.return_date|date:"d F Y" }}</dd>
+                    {% endif %}
+                </dl>
+                
+                {% if loan.notes %}
+                <h5>Notes</h5>
+                <p>{{ loan.notes }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a href="{% url 'loan-list' %}" class="btn btn-secondary">Back to List</a>
+        {% if loan.status != 'returned' %}
+            <a href="{% url 'return-book' loan.id %}" class="btn btn-success">Return Book</a>
+        {% endif %}
+        <a href="/admin/books/loan/{{ loan.id }}/change/" class="btn btn-outline-primary">Edit in Admin</a>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Return Book - Library Manager{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h1 class="card-title">Return Book</h1>
+    </div>
+    <div class="card-body">
+        <div class="alert alert-info">
+            <p>You are about to return the following book:</p>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">{{ loan.book.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">by {{ loan.book.author }}</h6>
+                <p class="mb-2">
+                    <strong>Borrowed by:</strong> {{ loan.borrower_name }}
+                </p>
+                <p class="mb-2">
+                    <strong>Loan date:</strong> {{ loan.loan_date|date:"d F Y" }}
+                </p>
+                <p class="mb-2">
+                    <strong>Due date:</strong> {{ loan.due_date|date:"d F Y" }}
+                </p>
+                
+                <p class="mb-0">
+                    <strong>Current status:</strong> 
+                    {% if loan.status == 'active' %}
+                        <span class="badge bg-success">Active</span>
+                    {% elif loan.status == 'overdue' %}
+                        <span class="badge bg-danger">Overdue</span>
+                    {% elif loan.status == 'returned' %}
+                        <span class="badge bg-secondary">Already Returned</span>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+        
+        {% if loan.status == 'returned' %}
+            <div class="alert alert-warning">
+                <p>This book has already been returned on {{ loan.return_date|date:"d F Y" }}.</p>
+            </div>
+            <a href="{% url 'loan-detail' loan.id %}" class="btn btn-primary">Back to Details</a>
+        {% else %}
+            <form method="post">
+                {% csrf_token %}
+                <p>Are you sure you want to mark this book as returned?</p>
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-success">Confirm Return</button>
+                    <a href="{% url 'loan-detail' loan.id %}" class="btn btn-outline-secondary">Cancel</a>
+                </div>
+            </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %} 
